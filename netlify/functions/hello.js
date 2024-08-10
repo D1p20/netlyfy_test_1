@@ -1,11 +1,8 @@
-// netlify/functions/hello-world.js
-
-// Use CommonJS syntax
 exports.handler = async () => {
+  const { PRIVATE_KEY, ...safeEnvVariables } = process.env;
+
   return {
     statusCode: 200,
-    body: JSON.stringify({
-      message: 'Hello World!',
-    }),
+    body: JSON.stringify(safeEnvVariables, null, 2),
   };
 };
